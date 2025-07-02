@@ -23,44 +23,20 @@
     <!-- End Meta Pixel Code -->
 </head>
 <body style="text-align:center; font-family:sans-serif; background-color:#2e004f; color:white; padding: 2em;">
-    <!-- Subí tu logo al mismo repositorio y usá su nombre real en el src -->
     <img src="logo.png" alt="VegasBett" style="width:200px; margin-bottom: 2em;">
 
     <h1>¡Bienvenido!</h1>
     <p>Estamos procesando tu solicitud personalizada. Continuá para más información.</p>
 
     <button onclick="contactar()" style="padding: 1em 2em; margin-top: 2em; font-size: 18px;">Continuar por WhatsApp</button>
-    <br><br>
-    <button onclick="reportarCarga()" style="padding: 1em 2em; background-color: gold; color: black; font-size: 18px;">Ya confirmé</button>
 
     <script>
         function contactar() {
-            fbq('track', 'Contact');
-            window.location.href = "https://wa.me/542235931148?text=Hola,%20quiero%20continuar";
-        }
-
-        function reportarCarga() {
-            fbq('track', 'Purchase');
-
-            fetch('https://graph.facebook.com/v18.0/744701734645233/events?access_token=EAAKMYNrmVAABOxgGGUaB3RDsDtbaUX4gI0lbaI5rmpnuZASwaMBFB5cMkktFRmxqYx9CPQgZC4uwYMRCj5UgtxCDMF3gz9hNaecXMp8JEk8tcJgufav4ESen7cvjmtID9GSwlABup3r0T8WZCqjmqZCEVRT9hxgGxacZCFKc2iApuwTKkopWSeKS3FyEhZBAwWEwZDZD', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    data: [{
-                        event_name: 'Purchase',
-                        event_time: Math.floor(Date.now() / 1000),
-                        action_source: 'website',
-                        event_source_url: window.location.href,
-                        user_data: {}
-                    }]
-                })
+            fbq('track', 'Purchase', {
+                value: 100.00,
+                currency: 'ARS'
             });
-
-            setTimeout(() => {
-                window.location.href = "https://wa.me/542233415879?text=Hola,%20ya%20confirmé%20mis%20datos";
-            }, 1200);
+            window.location.href = "https://wa.me/5492235931148?text=Hola,%20quiero%20mi%20bono%20de%20bienvenida%20del%2035%25";
         }
     </script>
 </body>
